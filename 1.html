@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MS ELECTRICALS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --muted:#a6a6a6;
+      --accent:#ffcc00;
+      --card:#0f0f0f;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#050505 0%, #0b0b0b 100%);color:#fff;}
+
+    /* header */
+    .header{display:flex;align-items:center;justify-content:space-between;padding:22px 48px;background:transparent;position:sticky;top:0;z-index:50}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#111,#222);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);font-size:18px}
+    .brand h1{margin:0;font-size:18px;letter-spacing:0.4px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--accent),#ffc84d);color:#111;padding:10px 16px;border-radius:12px;font-weight:700;text-decoration:none}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:56px 48px;align-items:center}
+    .hero-left{max-width:930px}
+    .eyebrow{color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px}
+    .h-title{font-size:48px;line-height:1.05;margin:12px 0 14px}
+    .h-desc{color:var(--muted);font-size:16px;max-width:680px}
+    .hero-actions{display:flex;gap:12px;margin-top:22px}
+    .btn{padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+    .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(255,255,255,0.06)}
+    .btn-primary{background:var(--accent);color:#111}
+
+    /* product card column */
+    .panel{background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:20px;border-radius:16px}
+    .shop-card{display:flex;flex-direction:column;gap:10px}
+    .shop-card + .shop-card { /* This targets the second shop-card when it follows another shop-card */
+      margin-top: 30px; /* Increased gap between product cards */
+    }
+    .product-image{height:360px;background:linear-gradient(180deg,#161616,#0f0f0f);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);overflow:hidden}
+    .product-image img{width:100%;height:100%;object-fit:cover}
+    .product-name{font-weight:700}
+    .product-sub{color:var(--muted);font-size:14px}
+
+    /* grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:40px 48px}
+    .card{background:var(--card);padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.03)}
+    .card .img{height:260px;border-radius:10px;background:linear-gradient(180deg,#222,#101010);display:flex;align-items:center;justify-content:center;color:var(--muted);overflow:hidden}
+    .card .img img{width:100%;height:100%;object-fit:cover}
+    .card h3{margin:12px 0 6px}
+    .card p{margin:0;color:var(--muted)}
+
+    /* footer */
+    footer {
+      padding: 60px 48px 30px;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      background: var(--card);
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-column h3 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 18px;
+      position: relative;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+    }
+    
+    .footer-about p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 204, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    
+    .contact-details h4 {
+      margin: 0 0 4px;
+      font-size: 14px;
+    }
+    
+    .contact-details p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .social-link:hover {
+      background: var(--accent);
+      color: #000;
+      transform: translateY(-3px);
+    }
+    
+    .map-container {
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .map-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .map-placeholder i {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+    
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .footer-bottom-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-bottom-links a:hover {
+      color: var(--accent);
+    }
+
+    /* responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr;gap:18px;padding:28px}
+      .grid{grid-template-columns:repeat(2,1fr);padding:24px}
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+    }
+    @media (max-width:640px){
+      nav ul{display:none}
+      .grid{grid-template-columns:1fr;padding:18px}
+      .header{padding:14px}
+      .hero{padding:18px}
+      .h-title{font-size:34px}
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="logo">MS</div>
+      <div>
+        <h1>MS ELECTRICALS</h1>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Electrical&Plumbing</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="cta" id="shopBtn">Shop on WhatsApp</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">Premium Modular Systems</div>
+        <h2 class="h-title">Lighting Your Homes & Powering Your Dreams </h2>
+        <p class="h-desc">Quality electrical and plumbing solutions for modern living.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="shopBtnHero">Shop on WhatsApp</button>
+          <button class="btn btn-ghost">Explore Catalog</button>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <div class="shop-card">
+          <div class="product-image">
+            <img 
+              src="product\fan-55.jpg_fXqeTZF.png" 
+              alt="Ceiling Fan" 
+            />
+          </div>
+          <div class="product-name">Luker BLDC Series</div>
+          <div class="product-sub">Starts at ₹2350</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn btn-primary" id="shopPanelBtn1">Buy on WhatsApp</button>
+            <button class="btn btn-ghost">View Details</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="product-image">
+            <img 
+              src="product\vgard insight.webp" 
+              alt="Ceiling Fan"/>
+          </div>
+          <div class="product-name">V-Guard INSIGHT-G Premium BLDC Ceiling Fan</div>
+          <div class="product-sub">Starts at ₹5,199</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn btn-primary" id="shopPanelBtn2">Buy on WhatsApp</button>
+            <button class="btn btn-ghost">View Details</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="products" class="grid">
+      <!-- repeat product cards -->
+      <div class="card">
+        <div class="img">
+          <img src="product\fancy.jpg" alt="Fancy light" />
+        </div>
+        <h3>Modern 3-Ring Gold Body Wave LED Chandelier</h3>
+        <p>Add a refined glow to your interiors with this Gold Modern LED Chandelier, designed for contemporary elegance and long-lasting performance. The warm white 3000K LED light offers cozy ambient lighting, ideal for residential and commercial spaces alike..</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn btn-primary" data-product="Fancy light">Buy on WhatsApp</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img">
+          <img src="product\airogometry.webp" alt="Fans" />
+        </div>
+        <h3>Eco link airogeometry</h3>
+        <p>Innovative design of EcoLink AiroGeometry BLDC ceiling fan combines elegance and efficiency for a stunning modern ambiance..</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn btn-primary" data-product="AiroGeometry">Buy on WhatsApp</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img">
+          <img src="product\pebble.webp" alt="waterheaters" />
+        </div>
+        <h3>Pebble Shine Smart Geyser</h3>
+        <p>The V-Guard Pebble Shine Smart Water Heater is equipped with a digital controller with Wi-Fi connectivity to control your water heater from anywhere in the world, featuring a BEE 5 Star Rating for superior energy efficiency..</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn btn-primary" data-product="V-Guard Pebble">Buy on WhatsApp</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img">
+          <img src="product\24_Bathroom-Vanity-with-Sink,Floating-Curved-Edges-Striped-Bathroom-Cabinet-with-a-Drawer,Round-Ceramic-Basin-without-Faucet.jpg" alt="Bathroom Vanities" />
+        </div>
+        <h3>Bathroom Vanities</h3>
+        <p>Compact designs with hidden storage.</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn btn-primary" data-product="Bathroom Vanities">Buy on WhatsApp</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img">
+          <img src="product\vgrd pumb.jpg" alt="VB1-H1S Lite" />
+        </div>
+        <h3>VB1-H1S Lite</h3>
+        <p>If you are looking for a reliable 0.5HP Regenerative Mini Booster Pump, the VB1-H1S Lite is your answer. It can deliver pressurised water between 1.5 and 2.5 bar on all the usual outlets of a single bathroom.</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn btn-primary" data-product="VB1-H1S Lite">Buy on WhatsApp</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img">
+          <img src="product\lucker cable.png" alt="Fire zero wires" />
+        </div>
+        <h3>Fire zero wires</h3>
+        <p>High Insulation Higher Reliability Fire zero wires - Rewire your future .</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn btn-primary" data-product="Fire zero wires">Buy on WhatsApp</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column footer-about">
+        <h3>About Us</h3>
+        <p>MS Electricals provides premium electrical and plumbing solutions for modern homes and businesses. With years of experience, we deliver quality products and professional services.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/share/1HWEr8KpPq/?mibextid=wwXIfr" class="social-link">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/_ms_electricals?igsh=Mzh4ajk5d2JwMWls" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Our Location</h4>
+              <p>MS Electricals<br>Gandhi Bazar Rd, Santhi Nagar, Sultanpet, Palakkad, Kerala 678001</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Phone Number</h4>
+              <p>+91 98958 77962</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email Address</h4>
+              <p>ms.electricals.pkd@gmail.com<br>shaikums@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Our Location</h3>
+        <div class="map-container">
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <p>Interactive Google Map</p>
+            <small><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d411.9858424294835!2d76.65559098753536!3d10.773582280226798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba86de47d400e7d%3A0x8207949df4c60e16!2sMS%20Electricals!5e0!3m2!1sen!2sin!4v1761029514905!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></small>
+          </div>
+        </div>
+        <div style="margin-top: 15px; display: flex; gap: 10px;">
+          <button class="btn btn-primary" style="padding: 8px 12px; font-size: 13px;">
+            <i class="fas fa-directions"></i> Get Directions
+          </button>
+          <button class="btn btn-ghost" style="padding: 8px 12px; font-size: 13px;">
+            <i class="fas fa-map-pin"></i> View Larger Map
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>© 2023 MS Electricals. All Rights Reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // WhatsApp integration
+    const WHATSAPP_NUMBER = "919895877962"; // Replace with your actual WhatsApp number
+    const BUSINESS_NAME = "MS ELECTRICALS";
+    
+    // Function to redirect to WhatsApp with a product message
+    function redirectToWhatsApp(productName = "") {
+      let message = `Hello ${BUSINESS_NAME}! I'm interested in your products.`;
+      
+      if (productName) {
+        message = `Hello ${BUSINESS_NAME}! I'm interested in your ${productName}. Can you provide more details?`;
+      }
+      
+      // Encode the message for URL
+      const encodedMessage = encodeURIComponent(message);
+      
+      // Create WhatsApp URL
+      const whatsappURL = `https://wa.me/${919895877962}?text=${encodedMessage}`;
+      
+      // Redirect to WhatsApp
+      window.open(whatsappURL, '_blank');
+    }
+    
+    // Function to bind WhatsApp redirect to buttons
+    function bindWhatsAppRedirect(id, productName = "") {
+      const el = document.getElementById(id);
+      if(el) el.addEventListener('click', () => redirectToWhatsApp(productName));
+    }
+    
+    // Bind WhatsApp redirects to specific buttons
+    bindWhatsAppRedirect('shopBtn', 'products');
+    bindWhatsAppRedirect('shopBtnHero', 'products');
+    bindWhatsAppRedirect('shopPanelBtn1', 'Luker BLDC Series');
+    bindWhatsAppRedirect('shopPanelBtn2', 'Luker BLDC Series');
+    
+    // Bind WhatsApp redirects to product cards
+    document.querySelectorAll('[data-product]').forEach(button => {
+      button.addEventListener('click', () => {
+        const productName = button.getAttribute('data-product');
+        redirectToWhatsApp(productName);
+      });
+    });
+    
+    // Map integration - placeholder for actual Google Maps implementation
+    document.querySelector('.btn-primary i.fa-directions').closest('button').addEventListener('click', function() {
+      // Replace with actual Google Maps directions URL
+      const address = "MS Electricals,Gandhi Bazar Rd, Santhi Nagar, Sultanpet, Palakkad, Kerala 678001";
+      const encodedAddress = encodeURIComponent(address);
+      window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank');
+    });
+    
+    document.querySelector('.btn-ghost i.fa-map-pin').closest('button').addEventListener('click', function() {
+      // Replace with actual Google Maps location URL
+      const address = "MS Electricals,Gandhi Bazar Rd, Santhi Nagar, Sultanpet, Palakkad, Kerala 678001";
+      const encodedAddress = encodeURIComponent(address);
+      window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+    });
+  </script>
+</body>
+</html>
